@@ -6,9 +6,11 @@ namespace MVC_Project
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            builder.Services.AddControllers();
+            builder.Services.AddControllersWithViews();
 
             var app = builder.Build();
+
+            app.UseStaticFiles();
 
             app.UseRouting();
 
@@ -46,7 +48,7 @@ namespace MVC_Project
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "/{Controller = Home}/{Action = Index}",
+                pattern: "/{Controller=Home}/{Action=Index}",
                 defaults: new {Controller = "Home", Action = "Index"}
                 );
 
